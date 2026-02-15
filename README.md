@@ -188,7 +188,7 @@ provideIonicAngular({
   innerHTMLTemplatesEnabled: true
 })
 
-# Key Engineering Decisions
+## Key Engineering Decisions
 1. Why Angular Signals?
     - Lightweight reactive state
     - Eliminates boilerplate
