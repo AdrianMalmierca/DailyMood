@@ -156,7 +156,7 @@ This mimics real backend flow without implementing MongoDB or REST APIs.
 ## Installation
 
 1. Clone the repository
-git clone https://github.com/your-username/shoppingOnline.git
+git clone https://github.com/AdrianMalmierca/DailyMood
 ```bash
 cd shoppingOnline
 ```
