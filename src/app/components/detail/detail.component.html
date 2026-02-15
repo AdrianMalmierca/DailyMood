@@ -1,0 +1,54 @@
+<ion-content class="ion-padding page-with-header">
+  @if (product) {
+    <div class="details-container">
+
+      <div class="images-wrapper">
+        @for (img of product.images; track img) {
+          <div class="img-box">
+            <img [src]="img" class="product-image" />
+          </div>
+        }
+      </div>
+
+      <h2 class="title">{{ product.title }}</h2>
+      <p class="description">{{ product.description }}</p>
+
+      <div class="info">
+        <p><strong>Precio:</strong> {{ product.price | currency:'EUR' }}</p>
+        <p><strong>Valoración:</strong> {{ product.rating }}</p>
+        <p><strong>Stock:</strong> {{ product.stock }}</p>
+        <p><strong>Categoría:</strong> {{ product.category }}</p>
+        <p><strong>Marca:</strong> {{ product.brand }}</p>
+        <p><strong>SKU:</strong> {{ product.sku }}</p>
+        <p><strong>Peso:</strong> {{ product.weight }} g</p>
+        <p>
+          <strong>Dimensiones:</strong> 
+          {{ product.dimensions.width }}×{{ product.dimensions.height }}×{{ product.dimensions.depth }} mm
+        </p>
+        <p><strong>Disponibilidad:</strong> {{ product.availabilityStatus }}</p>
+        <p><strong>Política de devolución:</strong> {{ product.returnPolicy }}</p>
+      </div>
+
+      <h3 class="reviews-title">Reviews</h3>
+
+      <div class="reviews">
+        @for (review of product.reviews; track review.comment) {
+          <p class="review">Valoración ( {{ review.rating }} estrellas) - {{ review.reviewerName }}: {{ review.comment }}</p>
+        }
+      </div>
+    </div>
+
+    <ion-button
+      expand="block"
+      [disabled]="cart.isOutOfStock(product!)"
+      (click)="cart.addToCart(product!)">
+
+      {{ cart.isOutOfStock(product!) ? 'Sin stock disponible' : 'Añadir al carrito' }}
+    </ion-button>
+
+
+  } @else {
+    <ion-spinner name="crescent"></ion-spinner>
+  }
+</ion-content>
+

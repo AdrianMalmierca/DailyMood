@@ -1,0 +1,15 @@
+<ion-content class="ion-padding page-with-header">
+
+  <app-search-bar (searchChange)="onSearch($event)"></app-search-bar>
+
+  @if (loading) {
+    <ion-spinner name="crescent"></ion-spinner>
+  } @else {
+    <app-product-list [products]="filteredProducts"></app-product-list>
+    @if (filteredProducts.length === 0) {
+      <p>No se encontraron productos.</p>
+    }
+  }
+
+</ion-content>
+

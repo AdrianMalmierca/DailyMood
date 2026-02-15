@@ -1,0 +1,8 @@
+<ion-content class="ion-padding page-with-header">
+  @if (fav.favorites().length > 0) {
+    <app-product-list [products]="fav.favorites()"></app-product-list>
+  } @else {
+    <p>No tienes productos favoritos.</p>
+  }
+</ion-content>
+

@@ -1,0 +1,32 @@
+<ion-card>
+    <ion-icon
+      class="fav-icon"
+      [name]="isFav ? 'star' : 'star-outline'"
+      [class.filled]="isFav"
+      (click)="toggle($event)"
+    ></ion-icon>
+
+    <ion-icon
+      class="cart-icon"
+      name="cart-outline"
+      [class.disabled]="cart.isOutOfStock(product)"
+      [class.animate]="added"
+      (click)="!cart.isOutOfStock(product) && addToCart($event)">
+    </ion-icon>
+
+
+
+  <div class="click-area" [routerLink]="['/tabs/details', product.id]">
+    <ion-img [src]="product.thumbnail"></ion-img>
+
+    <ion-card-header>
+      <ion-card-title>{{ product.title }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Precio: {{ product.price }} €</p>
+      <p>Valoración({{ product.rating }})</p>
+    </ion-card-content>
+  </div>
+</ion-card>
+

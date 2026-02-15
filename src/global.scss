@@ -35,3 +35,34 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+.global-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.page-with-header {
+  --padding-top: 64px;
+}
+
+.dark ion-card-title,
+.dark ion-card-content p {
+  color: #fff;
+}
+
+.dark ion-searchbar {
+  --background: #2c2c2e;
+  --color: #ffffff;
+  --placeholder-color: #cccccc;
+  --icon-color: #ffffff;
+  --clear-button-color: #ffffff;
+  --input-color: #ffffff;
+}
+
+.dark ion-searchbar::part(input) {
+  color: #ffffff ;
+}
+
