@@ -230,4 +230,5 @@ This project showcases:
 
 ## Author
 Adrián Martín Malmierca
+
 Computer Engineer & Mobile Applications Master's Student
