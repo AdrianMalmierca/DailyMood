@@ -158,7 +158,7 @@ This mimics real backend flow without implementing MongoDB or REST APIs.
 1. Clone the repository
 git clone https://github.com/AdrianMalmierca/DailyMood
 ```bash
-cd shoppingOnline
+cd DailyMood
 ```
 
 2. Install dependencies
