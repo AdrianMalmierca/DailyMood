@@ -325,6 +325,9 @@ Used for fetching product catalog and metadata.
 - Stateless presentation layer
 - Simulated infrastructure layer (orders)
 
+## What did I learn?
+I have learned how to create an app with Angular and Ionic. Ionic is a framework to create mobile/web apps, but until now I have only created apps for web or apps for mobile. So with this app I have learned and understand how Ionic works, the components of the framework like "ion-button". Although if you know how to programme in Angular is not hard to undestand Ionic, I have loved do this project and I want to keep working on it to make it better, with more functionalities. I also like how you can choose the type of project while you're creating it, cause in native Angular you have to create manually the tab meanwhile in Ionic you can choose it and I really like how it looks, I feel Ionic makes easier the job.
+
 ## Author
 Adrián Martín Malmierca
 
