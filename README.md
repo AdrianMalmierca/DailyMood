@@ -4,7 +4,7 @@ A modern e-commerce mobile/web application built with Angular (standalone archit
 This project demonstrates clean architecture principles, reactive UI patterns, modular component design, and professional frontend engineering practices.
 
 ## Features
-### Product Catalog
+### Product catalog
 1. Fetches products from a public API
 2. Grid layout with responsive breakpoints
 3. Product details page with full metadata
@@ -12,13 +12,13 @@ This project demonstrates clean architecture principles, reactive UI patterns, m
 5. Currency formatting
 6. Real stock display
 
-### Favorites System
+### Favorites system
 1. Add/remove products from favorites
 2. Persistent storage via localStorage
 3. Reactive state using Angular Signals
 4. Favorites tab view
 
-### Cart System
+### Cart system
 1. Add to cart from product card or detail page
 2. Quantity increment/decrement
 3. Stock limitation enforced
@@ -28,7 +28,7 @@ This project demonstrates clean architecture principles, reactive UI patterns, m
 7. Total item count (computed signal)
 8. Clear cart functionality
 
-### Simulated Checkout
+### Simulated checkout
 1. Async checkout simulation (network delay)
 2. Randomized payment failure simulation (10%)
 3. Order ID generation
@@ -39,7 +39,7 @@ This project demonstrates clean architecture principles, reactive UI patterns, m
     - Product breakdown
     - Total price
 
-### Order System
+### Order system
 1. Local order persistence
 2. Generated UUID per order
 3. Order history stored in localStorage
@@ -49,7 +49,7 @@ This project demonstrates clean architecture principles, reactive UI patterns, m
 2. Case-insensitive search
 3. Reactive search bar component
 
-### Theme Toggle
+### Theme toggle
 1. Dark mode support
 2. System preference detection
 3. Manual toggle
@@ -61,7 +61,7 @@ This project demonstrates clean architecture principles, reactive UI patterns, m
 4. Back button management
 5. Responsive layout
 
-## Architecture Overview
+## Architecture overview
 This application follows a clean, modular structure:
 
 src/app
@@ -93,7 +93,7 @@ src/app
 │
 └── tabs/
 
-## State Management Strategy
+## State management strategy
 The app uses Angular Signals for reactive state:
 - signal() for internal mutable state
 - computed() for derived values (total price, total items, favorite status)
@@ -101,7 +101,7 @@ The app uses Angular Signals for reactive state:
 
 This eliminates the need for external state libraries (e.g., NgRx) while maintaining reactive correctness.
 
-## Data Persistence
+## Data persistence
 All persistent state is stored in localStorage:
 - Favorites → favorites
 - Cart → cart
@@ -109,7 +109,7 @@ All persistent state is stored in localStorage:
 
 No backend is currently implemented. The checkout process is simulated.
 
-## Data Source
+## Data source
 Products are fetched from: https://dummyjson.com/products
 The API returns full product metadata including:
 - Title
@@ -125,7 +125,7 @@ The API returns full product metadata including:
 - Warranty
 - Shipping info
 
-## Tech Stack
+## Tech stack
 1. Angular (Standalone Components)
 2. Ionic Framework
 3. TypeScript
@@ -134,7 +134,7 @@ The API returns full product metadata including:
 6. CSS Animations
 7. localStorage persistence
 
-## UI / UX Enhancements
+## UI / UX enhancements
 1. Animated cart icon when adding product
 2. Stock-aware disabled add button
 3. Purchase confirmation modal
@@ -143,7 +143,7 @@ The API returns full product metadata including:
 6. Clean component separation
 7. Computed totals in real-time
 
-## Simulated Backend Behavior
+## Simulated backend behavior
 1. The checkout process simulates:
 2. Network latency (1.5 seconds)
 3. Random payment failure (10%)
@@ -176,19 +176,19 @@ Or using Angular CLI:
 ng serve
 ```
 
-## Build for Production
+## Build for production
 ```
 ionic build
 ```
 
-## Important Configuration
+## Important configuration
 To allow HTML rendering inside Ionic alerts (used in checkout confirmation), ensure this is enabled in main.ts:
 
 provideIonicAngular({
   innerHTMLTemplatesEnabled: true
 })
 
-## Key Engineering Decisions
+## Key engineering decisions
 1. Why Angular Signals?
     - Lightweight reactive state
     - Eliminates boilerplate
@@ -217,8 +217,9 @@ provideIonicAngular({
 9. Unit and integration testing
 10. Clean Architecture layering (Domain / Application / Infrastructure)
 
-## Learning Outcomes Demonstrated
+## Learning outcomes demonstrated
 This project showcases:
+- Modern Angular development (v16+ patterns)
 - Component-driven architecture
 - State management using Angular Signals
 - Reactive UI updates
@@ -227,6 +228,102 @@ This project showcases:
 - Realistic e-commerce domain modeling
 - UX enhancements
 - Production-ready structure
+- Scalable frontend architecture
+- Lightweight reactive state management
+
+## Problem it solves
+Modern e-commerce applications require:
+- Reactive state management
+- Persistent cart and favorites
+- Stock control
+- Clean navigation
+- Mobile-first UX
+- Separation of concerns
+- Scalable architecture without unnecessary complexity
+
+This application solves the following problems:
+
+### Stateless UI vs persistent shopping experience
+Users expect their cart and favorites to persist across sessions.
+
+The app implements persistent state using localStorage synchronized with Angular Signals.
+
+### Reactive UI without heavy state libraries
+Instead of using complex state management solutions (e.g., NgRx), the app demonstrates how Angular Signals can handle:
+- Global cart state
+- Favorites management
+- Derived values (total price, item count)
+- UI auto-updates
+
+This reduces boilerplate while maintaining reactivity.
+
+### Stock integrity in frontend applications
+The cart system enforces real stock limits, preventing users from exceeding available inventory.
+
+### Separation of domain logic from UI
+Business logic (cart, favorites, orders) is fully encapsulated in services.
+
+Components remain presentation-focused and reusable.
+
+### Realistic checkout flow without backend
+The app simulates:
+- Network delay
+- Payment processing
+- Random failure
+- Order generation
+- Purchase confirmation
+
+This mimics real production behavior without requiring backend infrastructure.
+
+### Mobile-First E-Commerce Experience
+Built with Ionic, the application delivers a responsive, tab-based navigation model suitable for:
+- Web
+- Android
+- iOS (via Capacitor)
+
+## Technologies Used
+
+### Frontend Framework
+Angular
+- Angular Signals
+- Computed state
+- Dependency Injection
+- Angular Router
+- HttpClient
+
+### UI Framework
+Ionic Framework
+- Mobile-first components
+- Tab navigation
+- IonAlert, IonGrid, IonCard, IonSpinner
+- Dark mode support
+
+## State Management
+- Angular Signals (signal, computed, asReadonly)
+- Service-based reactive store pattern
+- LocalStorage persistence layer
+
+## Data Source
+DummyJSON public API
+(https://dummyjson.com/products
+)
+
+Used for fetching product catalog and metadata.
+
+## Styling & UX
+- CSS animations (cart feedback)
+- Responsive grid system
+- Currency formatting
+- Conditional rendering
+- Dark mode toggle
+
+## Architecture Principles
+- Component-driven design
+- Domain separation
+- Encapsulated business logic
+- Reactive UI updates
+- Stateless presentation layer
+- Simulated infrastructure layer (orders)
 
 ## Author
 Adrián Martín Malmierca
