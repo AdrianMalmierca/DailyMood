@@ -64,6 +64,7 @@ This project demonstrates clean architecture principles, reactive UI patterns, m
 ## Architecture overview
 This application follows a clean, modular structure:
 
+```
 src/app
 │
 ├── interfaces/
@@ -92,6 +93,7 @@ src/app
 │   └── details/
 │
 └── tabs/
+```
 
 ## State management strategy
 The app uses Angular Signals for reactive state:
