@@ -177,7 +177,7 @@ ng serve
 ```
 
 ## Build for production
-```
+```bash
 ionic build
 ```
 
