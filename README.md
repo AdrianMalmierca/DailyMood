@@ -158,17 +158,21 @@ This mimics real backend flow without implementing MongoDB or REST APIs.
 ## Installation
 
 1. Clone the repository
+```bash
 git clone https://github.com/AdrianMalmierca/DailyMood
+```
+
+2. Acces to the directory
 ```bash
 cd DailyMood
 ```
 
-2. Install dependencies
+3. Install dependencies
 ```bash
 npm install
 ```
 
-3. Run development server
+4. Run development server
 ```bash
 ionic serve
 ```
@@ -182,6 +186,39 @@ ng serve
 ```bash
 ionic build
 ```
+
+## Demostration
+
+### Home page
+Here there's the list with all the products recovered from the API.
+
+In the product card you can add to favourites or to the card.
+![Home page](src/assets/home.png)
+
+### Favourites page
+Here are the products added to favourites
+![Favourites page](src/assets/favourites.png)
+
+In case you don't hace any product added to favourites, you'll a message saying there's no products.
+![Favourites page](src/assets/favourites%20vacio.png)
+
+### Cart page
+Here are the products added to the cart
+![Cart page](src/assets/carrito%20lleno.png)
+
+When you click on the button to buy, you'll see the message with the order id, the date, the product and the total
+![Cart page](src/assets/compra.png)
+
+In case you don't hace any product added to the cart, you'll a message saying there's no products.
+![Cart page](src/assets/carrito%20vacio.png)
+
+### Search page
+Here you can search the product by their name, showing all the matches.
+![Search page](src/assets/search.png)
+
+### Settings page
+Here there's the option to change the color to dark/white
+![Settings page](src/assets/settings.png)
 
 ## Important configuration
 To allow HTML rendering inside Ionic alerts (used in checkout confirmation), ensure this is enabled in main.ts:
