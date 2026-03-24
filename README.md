@@ -1,69 +1,117 @@
-# ShoppingOnline – Ionic + Angular E-Commerce Application
-A modern e-commerce mobile/web application built with Angular (standalone architecture) and Ionic Framework, featuring reactive state management using Angular Signals, simulated checkout processing, stock control, favorites management, and persistent cart functionality.
+# DailyMood: ShoppingOnline — Ionic + Angular E-Commerce Application
 
-This project demonstrates clean architecture principles, reactive UI patterns, modular component design, and professional frontend engineering practices.
+![Angular](https://img.shields.io/badge/Angular-17-DD0031?style=flat-square&logo=angular)
+![Ionic](https://img.shields.io/badge/Ionic-7-3880FF?style=flat-square&logo=ionic)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript)
+![RxJS](https://img.shields.io/badge/RxJS-7-B7178C?style=flat-square&logo=reactivex)
+![Angular Signals](https://img.shields.io/badge/Angular_Signals-✓-DD0031?style=flat-square&logo=angular)
 
-## Features
-### Product catalog
-1. Fetches products from a public API
-2. Grid layout with responsive breakpoints
-3. Product details page with full metadata
-4. Reviews rendering
-5. Currency formatting
-6. Real stock display
+A modern e-commerce mobile/web application built with Angular standalone architecture and Ionic Framework, featuring reactive state management via Angular Signals, simulated checkout processing, stock control, favorites management, and persistent cart functionality.
 
-### Favorites system
-1. Add/remove products from favorites
-2. Persistent storage via localStorage
-3. Reactive state using Angular Signals
-4. Favorites tab view
+---
 
-### Cart system
-1. Add to cart from product card or detail page
-2. Quantity increment/decrement
-3. Stock limitation enforced
-4. Disable add button when stock exhausted
-5. Persistent cart state
-6. Total price calculation (computed signal)
-7. Total item count (computed signal)
-8. Clear cart functionality
+## Problem Statement
 
-### Simulated checkout
-1. Async checkout simulation (network delay)
-2. Randomized payment failure simulation (10%)
-3. Order ID generation
-4. Order history persistence
-5. Purchase confirmation alert with:
-    - Order number
-    - Purchase date
-    - Product breakdown
-    - Total price
+Modern e-commerce frontends require reactive state, persistent sessions, stock control, and a clean mobile-first UX — yet most demos either rely on heavyweight state libraries or skip persistence entirely.
 
-### Order system
-1. Local order persistence
-2. Generated UUID per order
-3. Order history stored in localStorage
+ShoppingOnline solves this by:
+
+- Managing global cart and favorites state with Angular Signals — no NgRx needed
+- Persisting cart, favorites, and order history across sessions via localStorage
+- Enforcing stock limits at the UI level to prevent over-ordering
+- Simulating a full async checkout flow (latency, failure, order generation) without a backend
+
+---
+
+## Screenshots
+
+### Home — Product Catalog
+Full product grid fetched from DummyJSON API. Add to cart or favorites directly from the card.
+
+![Home page](src/assets/home.png)
+
+### Favorites
+Products saved to favorites with persistent state across sessions.
+
+![Favourites page](src/assets/favourites.png)
+
+![Favourites empty](src/assets/favourites%20vacio.png)
+
+### Cart
+Full cart view with quantity controls, stock limits, and total calculation.
+
+![Cart page](src/assets/carrito%20lleno.png)
+
+Purchase confirmation modal with order ID, date, product breakdown, and total.
+
+![Purchase confirmation](src/assets/compra.png)
+
+![Cart empty](src/assets/carrito%20vacio.png)
 
 ### Search
-1. Client-side filtering
-2. Case-insensitive search
-3. Reactive search bar component
+Client-side filtering with case-insensitive, real-time matching.
 
-### Theme toggle
-1. Dark mode support
-2. System preference detection
-3. Manual toggle
+![Search page](src/assets/search.png)
 
-### Persistent theme state
-1. Mobile-First UI
-2. Built with Ionic components
-3. Tab-based navigation
-4. Back button management
-5. Responsive layout
+### Settings — Dark Mode
+System preference detection with manual toggle.
 
-## Architecture overview
-This application follows a clean, modular structure:
+![Settings page](src/assets/settings.png)
 
+---
+
+## Features
+
+### Product Catalog
+- Products fetched from the DummyJSON public API
+- Responsive grid with breakpoints
+- Detail page with full metadata: description, category, rating, stock, reviews, dimensions, SKU, warranty, and shipping info
+- Currency formatting and real stock display
+
+### Favorites System
+- Add/remove from favorites
+- Persistent via localStorage
+- Reactive state with Angular Signals
+
+### Cart System
+- Add from product card or detail page
+- Quantity increment/decrement with stock enforcement
+- Add button disabled when stock exhausted
+- Total price and item count via computed signals
+- Persistent cart state and clear cart functionality
+
+### Simulated Checkout
+- 1.5s async network delay simulation
+- 10% randomized payment failure
+- UUID order ID generation
+- Purchase confirmation alert with full order breakdown
+- Order history persisted to localStorage
+
+### Search
+- Client-side, case-insensitive filtering
+- Reactive search bar component
+
+### Theme Toggle
+- System preference detection
+- Manual dark/light toggle with persistent state
+
+---
+
+## Tech Stack
+
+| Layer | Technology | Reason |
+|-------|-----------|--------|
+| Framework | Angular (Standalone Components) | Modern component model, no NgModule boilerplate |
+| UI | Ionic Framework | Mobile-first components, tab navigation, Capacitor-ready |
+| Language | TypeScript | Type safety across the full app |
+| State | Angular Signals | Reactive state without external libraries |
+| HTTP | RxJS + HttpClient | Async data fetching from DummyJSON API |
+| Persistence | localStorage | Simple, backend-free persistence layer |
+| Styling | CSS Animations + Ionic styles | Cart feedback animation, responsive grid |
+
+---
+
+## Architecture Overview
 ```
 src/app
 │
@@ -95,279 +143,121 @@ src/app
 └── tabs/
 ```
 
-## State management strategy
-The app uses Angular Signals for reactive state:
-- signal() for internal mutable state
-- computed() for derived values (total price, total items, favorite status)
-- asReadonly() to expose immutable state externally
+---
 
-This eliminates the need for external state libraries (e.g., NgRx) while maintaining reactive correctness.
+## State Management
 
-## Data persistence
-All persistent state is stored in localStorage:
-- Favorites → favorites
-- Cart → cart
-- Orders → orders
+The app uses Angular Signals exclusively — no NgRx, no BehaviorSubjects:
 
-No backend is currently implemented. The checkout process is simulated.
+- `signal()` for internal mutable state (cart items, favorites list)
+- `computed()` for derived values (total price, item count, favorite status)
+- `asReadonly()` to expose immutable state to consuming components
 
-## Data source
-Products are fetched from: https://dummyjson.com/products
-The API returns full product metadata including:
-- Title
-- Description
-- Category
-- Price
-- Rating
-- Stock
-- Reviews
-- Images
-- Dimensions
-- SKU
-- Warranty
-- Shipping info
+All persistent state is synchronized with localStorage on every mutation:
 
-## Tech stack
-1. Angular (Standalone Components)
-2. Ionic Framework
-3. TypeScript
-4. RxJS (for HTTP)
-5. Angular Signals
-6. CSS Animations
-7. localStorage persistence
+| Key | Contents |
+|-----|----------|
+| `favorites` | Array of favorited product IDs |
+| `cart` | Cart items with quantities |
+| `orders` | Full order history |
 
-## UI / UX enhancements
-1. Animated cart icon when adding product
-2. Stock-aware disabled add button
-3. Purchase confirmation modal
-4. Loading spinners
-5. Responsive grid
-6. Clean component separation
-7. Computed totals in real-time
-
-## Simulated backend behavior
-1. The checkout process simulates:
-2. Network latency (1.5 seconds)
-3. Random payment failure (10%)
-4. Server-generated order ID
-5. Order timestamp
-6. Persistent order history
-
-This mimics real backend flow without implementing MongoDB or REST APIs.
+---
 
 ## Installation
-
-1. Clone the repository
 ```bash
+# Clone the repository
 git clone https://github.com/AdrianMalmierca/DailyMood
-```
-
-2. Acces to the directory
-```bash
 cd DailyMood
-```
 
-3. Install dependencies
-```bash
+# Install dependencies
 npm install
-```
 
-4. Run development server
-```bash
+# Start development server
 ionic serve
 ```
 
-Or using Angular CLI:
+Or using Angular CLI directly:
 ```bash
 ng serve
 ```
 
-## Build for production
+### Build for Production
 ```bash
 ionic build
 ```
 
-## Demostration
+### Important Configuration
 
-### Home page
-Here there's the list with all the products recovered from the API.
-
-In the product card you can add to favourites or to the card.
-![Home page](src/assets/home.png)
-
-### Favourites page
-Here are the products added to favourites
-![Favourites page](src/assets/favourites.png)
-
-In case you don't hace any product added to favourites, you'll a message saying there's no products.
-![Favourites page](src/assets/favourites%20vacio.png)
-
-### Cart page
-Here are the products added to the cart
-![Cart page](src/assets/carrito%20lleno.png)
-
-When you click on the button to buy, you'll see the message with the order id, the date, the product and the total
-![Cart page](src/assets/compra.png)
-
-In case you don't hace any product added to the cart, you'll a message saying there's no products.
-![Cart page](src/assets/carrito%20vacio.png)
-
-### Search page
-Here you can search the product by their name, showing all the matches.
-![Search page](src/assets/search.png)
-
-### Settings page
-Here there's the option to change the color to dark/white
-![Settings page](src/assets/settings.png)
-
-## Important configuration
-To allow HTML rendering inside Ionic alerts (used in checkout confirmation), ensure this is enabled in main.ts:
-
+To enable HTML rendering inside Ionic alerts (required for checkout confirmation), ensure this is set in `main.ts`:
+```typescript
 provideIonicAngular({
   innerHTMLTemplatesEnabled: true
 })
+```
 
-## Key engineering decisions
-1. Why Angular Signals?
-    - Lightweight reactive state
-    - Eliminates boilerplate
-    - Modern Angular best practice
-    - Suitable for small-to-medium scale apps
-
-2. Why localStorage?
-    - Simple persistence layer
-    - Ideal for frontend-only architecture
-    - No backend required for portfolio demonstration
-
-3. Why simulated checkout?
-    - Demonstrates async flows
-    - Shows domain separation (Cart vs Order)
-    - Mimics production logic without backend overhead
-
-## Potential Future Improvements
-1. JWT-based authentication
-2. Real backend (Node + Express + MongoDB)
-3. Server-side stock validation
-4. Payment gateway integration (Stripe)
-5. Order history page
-6. Route guards
-7. HTTP interceptors
-8. Environment-based API config
-9. Unit and integration testing
-10. Clean Architecture layering (Domain / Application / Infrastructure)
-
-## Learning outcomes demonstrated
-This project showcases:
-- Modern Angular development (v16+ patterns)
-- Component-driven architecture
-- State management using Angular Signals
-- Reactive UI updates
-- Async flow handling
-- Clean service separation
-- Realistic e-commerce domain modeling
-- UX enhancements
-- Production-ready structure
-- Scalable frontend architecture
-- Lightweight reactive state management
-
-## Problem it solves
-Modern e-commerce applications require:
-- Reactive state management
-- Persistent cart and favorites
-- Stock control
-- Clean navigation
-- Mobile-first UX
-- Separation of concerns
-- Scalable architecture without unnecessary complexity
-
-This application solves the following problems:
-
-### Stateless UI vs persistent shopping experience
-Users expect their cart and favorites to persist across sessions.
-
-The app implements persistent state using localStorage synchronized with Angular Signals.
-
-### Reactive UI without heavy state libraries
-Instead of using complex state management solutions (e.g., NgRx), the app demonstrates how Angular Signals can handle:
-- Global cart state
-- Favorites management
-- Derived values (total price, item count)
-- UI auto-updates
-
-This reduces boilerplate while maintaining reactivity.
-
-### Stock integrity in frontend applications
-The cart system enforces real stock limits, preventing users from exceeding available inventory.
-
-### Separation of domain logic from UI
-Business logic (cart, favorites, orders) is fully encapsulated in services.
-
-Components remain presentation-focused and reusable.
-
-### Realistic checkout flow without backend
-The app simulates:
-- Network delay
-- Payment processing
-- Random failure
-- Order generation
-- Purchase confirmation
-
-This mimics real production behavior without requiring backend infrastructure.
-
-### Mobile-First E-Commerce Experience
-Built with Ionic, the application delivers a responsive, tab-based navigation model suitable for:
-- Web
-- Android
-- iOS (via Capacitor)
-
-## Technologies Used
-
-### Frontend Framework
-Angular
-- Angular Signals
-- Computed state
-- Dependency Injection
-- Angular Router
-- HttpClient
-
-### UI Framework
-Ionic Framework
-- Mobile-first components
-- Tab navigation
-- IonAlert, IonGrid, IonCard, IonSpinner
-- Dark mode support
-
-## State Management
-- Angular Signals (signal, computed, asReadonly)
-- Service-based reactive store pattern
-- LocalStorage persistence layer
+---
 
 ## Data Source
-DummyJSON public API
-(https://dummyjson.com/products
-)
 
-Used for fetching product catalog and metadata.
+Products are fetched from the [DummyJSON](https://dummyjson.com/products) public API, which returns full product metadata including title, description, category, price, rating, stock, reviews, images, dimensions, SKU, warranty, and shipping info.
 
-## Styling & UX
-- CSS animations (cart feedback)
-- Responsive grid system
-- Currency formatting
-- Conditional rendering
-- Dark mode toggle
+---
 
-## Architecture Principles
-- Component-driven design
-- Domain separation
-- Encapsulated business logic
-- Reactive UI updates
-- Stateless presentation layer
-- Simulated infrastructure layer (orders)
+## Key Engineering Decisions
 
-## What did I learn?
-I have learned how to create an app with Angular and Ionic. Ionic is a framework to create mobile/web apps, but until now I have only created apps for web or apps for mobile. So with this app I have learned and understand how Ionic works, the components of the framework like "ion-button". Although if you know how to programme in Angular is not hard to undestand Ionic, I have loved do this project and I want to keep working on it to make it better, with more functionalities. I also like how you can choose the type of project while you're creating it, cause in native Angular you have to create manually the tab meanwhile in Ionic you can choose it and I really like how it looks, I feel Ionic makes easier the job.
+### Why Angular Signals over NgRx?
+Signals provide lightweight, built-in reactive state that eliminates the action/reducer/selector boilerplate NgRx requires. For a small-to-medium app, this is the modern Angular best practice — and it keeps the codebase approachable without sacrificing reactivity.
+
+### Why localStorage for persistence?
+A backend is unnecessary to demonstrate the domain logic that matters here: cart management, favorites, and order history. localStorage gives a clean persistence layer that survives page reloads while keeping the project frontend-only.
+
+### Why simulate the checkout?
+The goal is to demonstrate async flows and domain separation (Cart vs Order), not to wire up a payment gateway. Simulating network delay and random failure shows the same engineering patterns — loading states, error handling, confirmation flows — that a real backend integration would require.
+
+---
+
+## Future Improvements
+
+### Short Term
+- Order history page with full order details
+- Route guards for protected pages
+- HTTP interceptors for error handling
+- Unit and integration tests
+
+### Medium Term
+- JWT-based authentication
+- Real backend (Node + Express + MongoDB)
+- Server-side stock validation
+- Environment-based API configuration
+
+### Long Term
+- Stripe payment gateway integration
+- Clean Architecture layering (Domain / Application / Infrastructure)
+- Native mobile builds via Capacitor (Android + iOS)
+- NgRx for larger-scale state if the app grows significantly
+
+---
+
+## What I Learned Building This
+
+Ionic was new territory for me — until this project I had only built for pure web or pure mobile. What surprised me most was how naturally it integrates with Angular: the mental model is the same, the syntax is the same, and the extra Ionic components (`ion-button`, `ion-grid`, `ion-tabs`) slot in without friction.
+
+The biggest design insight was understanding the signal/computed pattern as a replacement for service-based BehaviorSubjects. Once I stopped reaching for RxJS for local state and leaned on `computed()` for derived values, the code got noticeably cleaner.
+
+I also learned to appreciate what a simulated backend buys you during development: the checkout flow taught me to think about async state (loading, success, failure) as first-class UI states — not just edge cases to handle after the happy path works.
+
+---
+
+## License
+
+MIT — free to use, modify, and deploy.
+
+---
 
 ## Author
-Adrián Martín Malmierca
 
-Computer Engineer & Mobile Applications Master's Student
+**Adrián Martín Malmierca**  
+Computer Engineer & Mobile Applications Master's Student  
+[GitHub](https://github.com/AdrianMalmierca) · [LinkedIn](https://www.linkedin.com/in/adri%C3%A1n-mart%C3%ADn-malmierca-4aa6b0293/)
+
+*Built as a portfolio project showcasing modern Angular patterns and mobile-first UI development.*
