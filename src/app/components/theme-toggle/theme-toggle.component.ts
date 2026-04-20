@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 @Component({
   selector: 'app-theme-toggle',
   templateUrl: './theme-toggle.component.html',
+  styleUrls: ['./theme-toggle.component.scss'],
   standalone: true,
   imports: [FormsModule, IonicModule],
 })
