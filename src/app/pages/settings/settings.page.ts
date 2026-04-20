@@ -9,11 +9,7 @@ import { ThemeToggleComponent } from 'src/app/components/theme-toggle/theme-togg
   standalone: true,
   imports: [ThemeToggleComponent, IonicModule]
 })
-export class SettingsPage implements OnInit {
+export class SettingsPage{
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

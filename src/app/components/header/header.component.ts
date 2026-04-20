@@ -12,7 +12,7 @@ import { ViewEncapsulation } from '@angular/core';
   imports: [IonicModule],
   encapsulation: ViewEncapsulation.None
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent{
   showBack = false;
 
   private noBackRoutes = [
@@ -31,8 +31,6 @@ export class HeaderComponent implements OnInit {
       this.showBack = !this.noBackRoutes.includes(url);
       });
   }
-
-  ngOnInit() {}
 
   goBack() {
     this.location.back();

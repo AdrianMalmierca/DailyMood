@@ -40,7 +40,7 @@ export class CartService {
     const existing = current.find(i => i.product.id === product.id);
 
     if (existing) {
-      if (existing.quantity >= product.stock) return; // límite real
+      if (existing.quantity >= product.stock) return;
       existing.quantity++;
       this.cartSignal.set([...current]);
     } else {

@@ -36,11 +36,11 @@ export class CartPage {
         .join('<br>');
 
       const alert = await this.alertCtrl.create({
-        header: 'Compra realizada con éxito',
+        header: 'Purchase successful',
         message: `
-          <strong>Nº Pedido:</strong> ${order.id}<br>
-          <strong>Fecha:</strong> ${new Date(order.createdAt).toLocaleString()}<br><br>
-          <strong>Productos:</strong><br>
+          <strong>Order number:</strong> ${order.id}<br>
+          <strong>Date:</strong> ${new Date(order.createdAt).toLocaleString()}<br><br>
+          <strong>Products:</strong><br>
           ${productList}
           <br><br>
           <strong>Total:</strong> ${order.total.toFixed(2)} €

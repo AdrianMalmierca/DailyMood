@@ -29,12 +29,12 @@ export class OrderService {
 
   async processCheckout(items: CartItem[], total: number): Promise<Order> {
 
-    //Simular delay red
+    //Delayed response to simulate real checkout process
     await new Promise(res => setTimeout(res, 1500));
 
-    //Simular fallo 10%
+    //Simulate failure 10% of the time
     if (Math.random() < 0.1) {
-      throw new Error('Error procesando el pago');
+      throw new Error('Error processing payment');
     }
 
     const newOrder: Order = {

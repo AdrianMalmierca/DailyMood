@@ -9,11 +9,7 @@ import { DetailComponent } from 'src/app/components/detail/detail.component';
   standalone: true,
   imports: [CommonModule, IonicModule, DetailComponent]
 })
-export class DetailsPage implements OnInit {
+export class DetailsPage{
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

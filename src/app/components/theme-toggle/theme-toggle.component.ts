@@ -12,9 +12,9 @@ export class ThemeToggleComponent implements OnInit {
   paletteToggle = false;
 
   ngOnInit() {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    this.initializeDarkPalette(prefersDark.matches);
-    prefersDark.addEventListener('change', (mediaQuery) => this.initializeDarkPalette(mediaQuery.matches));
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)'); //check if user has set a preference in the OS
+    this.initializeDarkPalette(prefersDark.matches); //apply the initial palette
+    prefersDark.addEventListener('change', (mediaQuery) => this.initializeDarkPalette(mediaQuery.matches)); //listen for changes in the OS preference and update the palette accordingly
   }
 
   initializeDarkPalette(isDark: boolean) {
