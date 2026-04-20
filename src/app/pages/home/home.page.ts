@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
   standalone: true,
   imports: [CommonModule, FormsModule, IonicModule, ProductListComponent]
 })
