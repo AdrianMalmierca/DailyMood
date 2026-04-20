@@ -10,6 +10,7 @@ import { ProductListComponent } from 'src/app/components/product-list/product-li
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
+  styleUrls: ['./search.page.scss'],
   standalone: true,
   imports: [CommonModule, FormsModule, IonicModule, SearchBarComponent, ProductListComponent]
 })

@@ -6,6 +6,7 @@ import { ThemeToggleComponent } from 'src/app/components/theme-toggle/theme-togg
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',
+  styleUrls: ['./settings.page.scss'],
   standalone: true,
   imports: [ThemeToggleComponent, IonicModule]
 })

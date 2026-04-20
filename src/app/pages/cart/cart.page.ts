@@ -9,7 +9,8 @@ import { OrderService } from 'src/app/services/order';
   selector: 'app-cart',
   standalone: true,
   imports: [CommonModule, IonicModule],
-  templateUrl: './cart.page.html'
+  templateUrl: './cart.page.html',
+  styleUrls: ['./cart.page.scss']
 })
 export class CartPage {
   constructor(public cart: CartService, private alertCtrl: AlertController, private orderService: OrderService) {}

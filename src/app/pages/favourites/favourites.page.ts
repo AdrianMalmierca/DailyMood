@@ -8,6 +8,7 @@ import { ProductListComponent } from 'src/app/components/product-list/product-li
   standalone: true,
   selector: 'app-favourites',
   templateUrl: './favourites.page.html',
+  styleUrls: ['./favourites.page.scss'],
   imports: [CommonModule, IonicModule, ProductListComponent]
 })
 export class FavouritesPage {

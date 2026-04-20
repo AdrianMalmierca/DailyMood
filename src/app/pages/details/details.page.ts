@@ -6,6 +6,7 @@ import { DetailComponent } from 'src/app/components/detail/detail.component';
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
+  styleUrls: ['./details.page.scss'],
   standalone: true,
   imports: [CommonModule, IonicModule, DetailComponent]
 })
